@@ -1,0 +1,55 @@
+/*
+int scene_manager_serialize_scene(Scene *scene, const char *file_name) {
+    if (scene == NULL || file_name == NULL) {
+        fprintf(stderr, "ERROR: Invalid Scene or file name.\n");
+        return -1;
+    }
+
+    // Open file for writing
+    FILE *file = fopen(file_name, "w");
+    if (file == NULL) {
+        fprintf(stderr, "ERROR: failed to open file for writing\n");
+        return -1;
+    }
+
+    // Serialize Scene header
+    fprintf(file, "[Scene]\n");
+    fprintf(file, "    name: \"%s\"\n", scene->name);
+    fprintf(file, "    entity_count: %" PRId32 "\n", scene->entity_count);
+
+    // Serialize each Entity
+    fprintf(file, "    [entities]\n");
+    for (int i = 0; i < scene->entity_count; i++) {
+        fprintf(file, "        [Entity]\n");
+        fprintf(file, "            id: (\"%s\", %" PRId32 ")\n", scene->entities[i]->id.prefix, scene->entities[i]->id.number);
+        fprintf(file, "            name: \"%s\"\n", scene->entities[i]->name);
+        fprintf(file, "            [elements]\n");
+
+        // Serialize each Element within the Entity
+        for (int j = 0; j < scene->entities[i]->element_count; j++) {
+            Element *element = scene->entities[i]->elements[j];
+            fprintf(file, "                [%s]\n", element->type_name);
+            // Serialize properties of the Element based on its type
+            // Example: Transform serialization
+            if (strcmp(element->type_name, "Transform") == 0) {
+                Transform *transform = (Transform *)element;
+                fprintf(file, "                    name: \"%s\"\n", transform->name);
+                fprintf(file, "                    owner.name: \"%s\"\n", transform->owner->name);
+                fprintf(file, "                    position: (%f, %f, %f)\n", transform->position->x, transform->position->y, transform->position->z);
+                fprintf(file, "                    rotation: (%f, %f, %f)\n", transform->rotation->x, transform->rotation->y, transform->rotation->z);
+                fprintf(file, "                    scale: (%f, %f, %f)\n", transform->scale->x, transform->scale->y, transform->scale->z);
+            }
+            fprintf(file, "                [/]\n");
+        }
+        fprintf(file, "            [/]\n");
+        fprintf(file, "        [/]\n");
+    }
+
+    fprintf(file, "    [/entities]\n");
+    fprintf(file, "[/Scene]\n");
+    
+    // Close the file
+    fclose(file);
+    return 0;
+}
+*/

@@ -1,0 +1,35 @@
+[Scene]
+    name: "Test Scene"
+    entity_count: 1
+    [array**] entities:
+
+        [Entity]
+            id: ("ENT", 0)
+            name: "Player"
+            element_count: 1
+
+            [array**] elements:
+
+                [Transform]
+                    name: "Player Transform" 
+                    owner.name: "Player" 
+                    position: (0, 0, 0)
+                    rotation: (0, 0, 0)
+                    scale: (1.0, 1.0, 1.0)
+                [/Transform]
+
+            [/array**]
+
+        [/Entity]
+        
+        [Entity]
+            id.prefix: "ENT"
+            id.number: 1
+            name: "Test Entity"
+            element_count: 0
+        [/Entity]
+
+        [/array**]
+
+[/Scene]
+
